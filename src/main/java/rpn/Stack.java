@@ -1,5 +1,7 @@
 package rpn;
 
+import java.util.Arrays;
+
 public class Stack {
     private double[] stack = new double[0];
 
@@ -23,5 +25,17 @@ public class Stack {
 
     public int size() {
         return stack.length;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+
+        for (double v : stack) {
+            str.append(v).append(" ");
+        }
+        str.deleteCharAt(str.length()-1); // Delete last space
+
+        return str.toString();
     }
 }

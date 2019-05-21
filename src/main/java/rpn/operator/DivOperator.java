@@ -1,4 +1,6 @@
-package rpn;
+package rpn.operator;
+
+import rpn.Stack;
 
 public class DivOperator extends Operator{
     private static double EPSILON = 10e-5;
@@ -8,7 +10,7 @@ public class DivOperator extends Operator{
     }
 
     @Override
-    public double calculate(Stack stack) {
+    public void calculate(Stack stack) {
         double b = stack.pop();
         double a = stack.pop();
 
@@ -16,10 +18,10 @@ public class DivOperator extends Operator{
             throw new ArithmeticException("Division by 0");
         }
 
-        return a / b;
+        stack.push( a / b);
     }
 
-    private boolean equals0(double val) {
+    private static boolean equals0(double val) {
         return Math.abs(val) < EPSILON;
     }
 }

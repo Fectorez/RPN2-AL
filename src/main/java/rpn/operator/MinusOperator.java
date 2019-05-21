@@ -1,4 +1,6 @@
-package rpn;
+package rpn.operator;
+
+import rpn.Stack;
 
 public class MinusOperator extends Operator {
     public MinusOperator(String token) {
@@ -6,7 +8,7 @@ public class MinusOperator extends Operator {
     }
 
     @Override
-    public double calculate(Stack stack) {
-        return -stack.pop() + stack.pop();
+    public void calculate(Stack stack) {
+        stack.push( -stack.pop() + stack.pop() );
     }
 }

@@ -1,4 +1,7 @@
-package rpn;
+package rpn.operator;
+
+import rpn.Stack;
+import rpn.Token;
 
 public abstract class Operator extends Token {
 
@@ -6,5 +9,5 @@ public abstract class Operator extends Token {
         super(token);
     }
 
-    public abstract double calculate(Stack stack);
+    public abstract void calculate(Stack stack);
 }

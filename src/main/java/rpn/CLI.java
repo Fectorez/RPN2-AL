@@ -8,11 +8,11 @@ public class CLI {
         String expression = Stream.of(args).collect(Collectors.joining(" "));
 
         System.out.println("About to evaluate '" + expression + "'");
-        double result = evaluate(expression);
+        String result = evaluate(expression);
         System.out.println("> " + result);
     }
 
-    static double evaluate(String expression) {
+    static String evaluate(String expression) {
         RPN rpn = new RPN();
         return rpn.compute(expression);
     }

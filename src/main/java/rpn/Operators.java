@@ -1,12 +1,18 @@
 package rpn;
 
+import rpn.operator.*;
+
 import java.util.Optional;
 
 public class Operators {
-    private static final String ADD = "+";
-    private static final String SUB = "-";
-    private static final String MUL = "*";
-    private static final String DIV = "/";
+    public static final String ADD = "+";
+    public static final String SUB = "-";
+    public static final String MUL = "*";
+    public static final String DIV = "/";
+    public static final String SWAP = "SWAP";
+    public static final String SQRT = "SQRT";
+    public static final String DROP = "DROP";
+    public static final String TIMES = "TIMES";
 
     public static Optional<Operator> findOperator(Token token) {
         String value = token.getValue();
@@ -19,6 +25,14 @@ public class Operators {
                 return Optional.of(new MultOperator(value));
             case DIV:
                 return Optional.of(new DivOperator(value));
+            case SWAP:
+                return Optional.of(new SwapOperator(value));
+            case SQRT:
+                return Optional.of(new SqrtOperator(value));
+            case DROP:
+                return Optional.of(new DropOperator(value));
+            case TIMES:
+                return Optional.of(new TimesOperator(value));
             default:
                 return Optional.ofNullable(null);
         }

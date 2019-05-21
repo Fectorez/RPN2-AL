@@ -1,17 +1,21 @@
 package rpn;
 
+import rpn.operator.Operator;
+
 import java.util.Optional;
 
 public class RPN {
     private Stack stack = new Stack();
 
-    public double compute(String expression) {
+    public String compute(String expression) {
         Token[] tokens = Tokenizer.tokenize(expression);
+
         for (Token token : tokens) {
             Optional<Operator> optionalOperator = Operators.findOperator(token);
+
             if ( optionalOperator.isPresent() ) {
                 Operator operator = optionalOperator.get();
-                stack.push(operator.calculate(stack));
+                operator.calculate(stack);
             }
             else {
                 Number number = new Number(token);
@@ -19,10 +23,6 @@ public class RPN {
             }
         }
 
-        if ( stack.size() > 1 ) {
-            throw new RuntimeException("Bad format");
-        }
-
-        return stack.pop();
+        return stack.toString();
     }
 }
